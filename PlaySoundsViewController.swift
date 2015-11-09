@@ -97,7 +97,7 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         
         /// set the audioplayer
         
-        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
+        audioPlayer = try? AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
         audioPlayer.enableRate = true
         
         /// create the audioEngine object
@@ -106,7 +106,7 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         
         ///create audioFile from recordedAudio's filepathUrl and it is required by audioPlayerNode
         
-        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
+        audioFile = try? AVAudioFile(forReading: receivedAudio.filePathUrl)
         
     }
 
@@ -119,12 +119,12 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         
         ///create Node and attach to engine
         
-        var audioPlayerNode = AVAudioPlayerNode()
+        let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
         ///create TimePitch and attach to engine
         
-        var changePitchEffect = AVAudioUnitTimePitch()
+        let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
         audioEngine.attachNode(changePitchEffect)
         
@@ -136,7 +136,10 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         ///make ready audioPlayerNode and AudioEngine
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        audioEngine.startAndReturnError(nil)
+        do {
+            try audioEngine.start()
+        } catch _ {
+        }
         
         ///play the recorded sound
         
@@ -149,12 +152,12 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         
         ///create Node and attach to engine
         
-        var audioPlayerNode = AVAudioPlayerNode()
+        let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
         ///create EchoEffect and attach to engine
         
-        var addEchoEffect = AVAudioUnitDelay()
+        let addEchoEffect = AVAudioUnitDelay()
         addEchoEffect.wetDryMix = echoLevel
         audioEngine.attachNode(addEchoEffect)
         
@@ -166,7 +169,10 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         ///make ready audioPlayerNode and audioEngine
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        audioEngine.startAndReturnError(nil)
+        do {
+            try audioEngine.start()
+        } catch _ {
+        }
         
         ///play the recorded sound
         
