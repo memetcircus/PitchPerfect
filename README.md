@@ -1,7 +1,7 @@
 # PitchPerfect
 PitchPerfect App  
 
-The Pitch Perfect app allows users to record a sound using the device’s microphone. It then allows users to play the recorded sound back with six different sound modulations: Chipmunk, Darth Vader, Super Slow, and Super Fast, Reverb and Eco.  
+The Pitch Perfect app allows users to record a sound using the device’s microphone. It then allows users to play the recorded sound back with six different sound modulations: Chipmunk, Darth Vader, Super Slow, and Super Fast, Reverb and Eco. The apps stores the last record and able to play the saved record.  
 The app has two view controller scenes:  
 * **Record Sounds View**: Allows users to record a sound.
 * **Play Sounds View**: Allows users to play the recorded sound back with effects.  
@@ -11,7 +11,7 @@ The two scenes are described in detail below.
 ####Record Sounds View  
 The **record sounds view** is the initial view for the app, and consists of a button with a microphone image. A label indicating the user to tap the button to start recording is beneath the image. Tapping this microphone button starts an audio recording session. The app uses AVFoundation library to record sounds from the microphone.  
 Tapping the microphone button disables the record button, display a “recording” label, and presents a stop button.  
-When the stop button is clicked, the app completes its recording and then push the second scene, namely **Play Sounds View** onto the navigation stack.
+When the stop button is clicked, the app completes its recording, it persists the record to device and then push the second scene, namely **Play Sounds View** onto the navigation stack.
   
 ####Play Sounds View  
 The play sounds view has six buttons to play the recorded sound file and a button to stop the playback.  
