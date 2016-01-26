@@ -24,7 +24,12 @@ The buttons for playing the recorded sounds have images corresponding to their s
 * Reverse image → Reverb sound  
   
 The **play sounds view** have been pushed onto the navigation stack. At the top left of the screen, clicking the navigation bar’s left button that has the title named “Record” pops the **play sounds view** off the stack and return the user to the **record sounds view**.
-Then the microphone button is presented as enabled and the stop button gets hidden.
+Then the microphone button is presented as enabled and the stop button gets hidden.  
+  
+####Licence  
+
+PitchPerfect created by Mehmet Akif Acar on June 20, 2015.  
+Copyright © 2015 Mehmet Akif Acar, www.memetcircus.com. All rights reserved.
 
 
 
